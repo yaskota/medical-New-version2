@@ -1,0 +1,546 @@
+[
+  {
+    "disease": "Common Flu (Influenza)",
+    "category": "viral",
+    "symptoms": ["fever", "cough", "headache", "fatigue", "sore_throat", "body_pain", "runny_nose", "chills"],
+    "min_match": 3,
+    "base_risk": "low",
+    "precautions": [
+      "Get plenty of rest and sleep",
+      "Drink warm fluids like soups and herbal teas",
+      "Gargle with warm salt water for sore throat",
+      "Avoid cold beverages and fried food",
+      "Wash hands frequently to prevent spreading"
+    ],
+    "home_remedies": [
+      "Ginger and honey tea (boil ginger in water, add honey)",
+      "Steam inhalation with eucalyptus oil",
+      "Turmeric milk (haldi doodh) before bed",
+      "Warm lemon water with honey",
+      "Chicken soup or vegetable broth"
+    ],
+    "medicines": [
+      "Paracetamol (500mg) for fever — every 6 hours",
+      "Cetirizine (10mg) for runny nose — once daily",
+      "Cough syrup (Dextromethorphan-based) if dry cough",
+      "Vitamin C supplements to boost immunity"
+    ]
+  },
+  {
+    "disease": "Dengue Fever",
+    "category": "mosquito_borne",
+    "symptoms": ["fever", "headache", "body_pain", "rash", "nausea", "fatigue", "joint_pain", "eye_pain", "bleeding_gums"],
+    "min_match": 3,
+    "base_risk": "high",
+    "precautions": [
+      "Drink plenty of fluids (ORS, coconut water, juices)",
+      "Monitor platelet count daily",
+      "Avoid aspirin and ibuprofen (can worsen bleeding)",
+      "Use mosquito nets and repellents",
+      "Consult a doctor immediately if bleeding occurs"
+    ],
+    "home_remedies": [
+      "Papaya leaf juice (helps increase platelet count)",
+      "Giloy (Tinospora) juice or kadha",
+      "Coconut water for hydration",
+      "Pomegranate juice to help with blood count",
+      "Kiwi fruit for vitamin C boost"
+    ],
+    "medicines": [
+      "Paracetamol ONLY for fever (avoid NSAIDs)",
+      "ORS sachets for rehydration",
+      "IV fluids may be needed (hospital care)",
+      "Platelet transfusion if count drops below 20,000"
+    ]
+  },
+  {
+    "disease": "Malaria",
+    "category": "mosquito_borne",
+    "symptoms": ["fever", "chills", "sweating", "headache", "fatigue", "nausea", "vomiting", "body_pain"],
+    "min_match": 3,
+    "base_risk": "high",
+    "precautions": [
+      "Complete full course of antimalarial medicines",
+      "Use mosquito nets while sleeping",
+      "Apply mosquito repellent creams",
+      "Eliminate stagnant water near your home",
+      "Consult doctor for blood test confirmation"
+    ],
+    "home_remedies": [
+      "Cinnamon water (boil cinnamon in water with honey)",
+      "Grapefruit consumption for natural quinine",
+      "Turmeric milk for immunity",
+      "Holy basil (tulsi) tea",
+      "Stay well hydrated with ORS"
+    ],
+    "medicines": [
+      "Chloroquine (as prescribed by doctor)",
+      "Artemisinin-based combination therapy (ACT)",
+      "Paracetamol for fever management",
+      "Anti-emetics if vomiting persists"
+    ]
+  },
+  {
+    "disease": "COVID-19",
+    "category": "viral",
+    "symptoms": ["fever", "cough", "fatigue", "loss_of_smell", "loss_of_taste", "difficulty_breathing", "sore_throat", "body_pain", "headache"],
+    "min_match": 3,
+    "base_risk": "high",
+    "precautions": [
+      "Isolate yourself immediately for 14 days",
+      "Wear a mask at all times around others",
+      "Monitor oxygen levels with a pulse oximeter",
+      "Seek emergency care if SpO2 drops below 94%",
+      "Inform close contacts for testing"
+    ],
+    "home_remedies": [
+      "Steam inhalation 2-3 times daily",
+      "Kadha (turmeric + ginger + black pepper + tulsi)",
+      "Warm water gargling with betadine",
+      "Prone positioning (lying face down) to improve breathing",
+      "Vitamin D and Zinc-rich foods"
+    ],
+    "medicines": [
+      "Paracetamol for fever and body pain",
+      "Vitamin C (1000mg), Vitamin D3, Zinc supplements",
+      "Ivermectin or Doxycycline (only if prescribed)",
+      "Inhaler (Budesonide) if prescribed for breathing",
+      "Remdesivir (hospital administered only)"
+    ]
+  },
+  {
+    "disease": "Migraine",
+    "category": "neurological",
+    "symptoms": ["headache", "nausea", "light_sensitivity", "vomiting", "blurred_vision", "throbbing_pain", "sound_sensitivity"],
+    "min_match": 2,
+    "base_risk": "moderate",
+    "precautions": [
+      "Rest in a dark, quiet room",
+      "Avoid bright screens and loud sounds",
+      "Maintain regular sleep schedule",
+      "Stay hydrated throughout the day",
+      "Identify and avoid personal triggers (stress, certain foods)"
+    ],
+    "home_remedies": [
+      "Apply cold compress on forehead and temples",
+      "Peppermint oil massage on temples",
+      "Ginger tea to reduce nausea and pain",
+      "Lavender oil aromatherapy",
+      "Magnesium-rich foods (bananas, almonds, spinach)"
+    ],
+    "medicines": [
+      "Sumatriptan (50mg) for acute migraine attack",
+      "Ibuprofen (400mg) or Naproxen for pain relief",
+      "Domperidone for nausea and vomiting",
+      "Propranolol for prevention (if frequent migraines)"
+    ]
+  },
+  {
+    "disease": "Acid Reflux (GERD)",
+    "category": "gastrointestinal",
+    "symptoms": ["stomach_pain", "burning_chest", "nausea", "bloating", "acidity", "belching", "sour_taste", "difficulty_swallowing"],
+    "min_match": 2,
+    "base_risk": "low",
+    "precautions": [
+      "Avoid spicy, oily, and fried food",
+      "Do not lie down immediately after eating",
+      "Eat smaller, more frequent meals",
+      "Elevate head while sleeping",
+      "Avoid caffeine, alcohol, and carbonated drinks"
+    ],
+    "home_remedies": [
+      "Cold milk for immediate relief from acidity",
+      "Banana consumption to neutralize stomach acid",
+      "Fennel seed (saunf) water after meals",
+      "Jeera (cumin) water — boil cumin seeds in water",
+      "Aloe vera juice on empty stomach"
+    ],
+    "medicines": [
+      "Pantoprazole (40mg) before breakfast",
+      "Antacid gel (Gelusil/Digene) for quick relief",
+      "Ranitidine (150mg) for acid reduction",
+      "Domperidone (10mg) if nausea present"
+    ]
+  },
+  {
+    "disease": "Gastritis",
+    "category": "gastrointestinal",
+    "symptoms": ["stomach_pain", "nausea", "vomiting", "bloating", "loss_of_appetite", "burning_chest", "indigestion"],
+    "min_match": 3,
+    "base_risk": "moderate",
+    "precautions": [
+      "Follow a bland diet (rice, bananas, toast)",
+      "Avoid NSAIDs like aspirin and ibuprofen",
+      "Reduce stress through meditation or yoga",
+      "Eat at regular intervals, don't skip meals",
+      "Quit smoking and limit alcohol"
+    ],
+    "home_remedies": [
+      "Coconut water to soothe stomach lining",
+      "Ginger tea to reduce inflammation",
+      "Licorice root (mulethi) tea",
+      "Carom seeds (ajwain) with warm water",
+      "Yogurt (curd) for probiotics"
+    ],
+    "medicines": [
+      "Omeprazole (20mg) before meals",
+      "Sucralfate suspension for stomach coating",
+      "Ondansetron (4mg) if severe nausea",
+      "Probiotics for gut health restoration"
+    ]
+  },
+  {
+    "disease": "Typhoid Fever",
+    "category": "bacterial",
+    "symptoms": ["fever", "headache", "stomach_pain", "fatigue", "loss_of_appetite", "diarrhea", "constipation", "rash"],
+    "min_match": 3,
+    "base_risk": "high",
+    "precautions": [
+      "Get Widal test done for confirmation",
+      "Drink only boiled or filtered water",
+      "Eat only freshly cooked food",
+      "Complete the full antibiotic course",
+      "Rest for at least 2 weeks"
+    ],
+    "home_remedies": [
+      "Apple cider vinegar in water to reduce fever",
+      "Banana consumption (easy to digest, energy boost)",
+      "Clove water (boil cloves in water, drink warm)",
+      "ORS and coconut water for hydration",
+      "Light khichdi or dal rice for nutrition"
+    ],
+    "medicines": [
+      "Azithromycin (500mg) or Ciprofloxacin (as prescribed)",
+      "Cefixime (200mg) if resistant strain",
+      "Paracetamol for fever control",
+      "ORS sachets for dehydration prevention"
+    ]
+  },
+  {
+    "disease": "Pneumonia",
+    "category": "respiratory",
+    "symptoms": ["fever", "cough", "difficulty_breathing", "chest_pain", "fatigue", "chills", "sweating", "phlegm"],
+    "min_match": 3,
+    "base_risk": "high",
+    "precautions": [
+      "Seek medical attention immediately",
+      "Get chest X-ray done",
+      "Complete the full antibiotic course",
+      "Use humidifier to ease breathing",
+      "Avoid smoking and polluted air"
+    ],
+    "home_remedies": [
+      "Warm fluids and soups for comfort",
+      "Steam inhalation to clear Airways",
+      "Turmeric in warm milk before bed",
+      "Honey and ginger for cough relief",
+      "Rest with head elevated"
+    ],
+    "medicines": [
+      "Amoxicillin (500mg) 3 times daily (as prescribed)",
+      "Azithromycin for atypical pneumonia",
+      "Cough expectorant (Guaifenesin-based)",
+      "Bronchodilator inhaler if wheezing present",
+      "Paracetamol for fever"
+    ]
+  },
+  {
+    "disease": "Common Cold",
+    "category": "viral",
+    "symptoms": ["runny_nose", "sneezing", "sore_throat", "cough", "mild_headache", "fatigue", "watery_eyes"],
+    "min_match": 2,
+    "base_risk": "low",
+    "precautions": [
+      "Rest and avoid overexertion",
+      "Wash hands frequently",
+      "Avoid close contact with others",
+      "Stay warm and cover yourself properly",
+      "Drink warm fluids throughout the day"
+    ],
+    "home_remedies": [
+      "Honey and lemon in hot water",
+      "Steam inhalation before bed",
+      "Warm salt water gargling",
+      "Tulsi and ginger tea",
+      "Chicken soup for relief"
+    ],
+    "medicines": [
+      "Cetirizine (10mg) for sneezing and runny nose",
+      "Paracetamol if mild fever present",
+      "Nasal decongestant spray (Oxymetazoline)",
+      "Throat lozenges for sore throat"
+    ]
+  },
+  {
+    "disease": "Urinary Tract Infection (UTI)",
+    "category": "bacterial",
+    "symptoms": ["burning_urination", "frequent_urination", "lower_abdominal_pain", "cloudy_urine", "fever", "back_pain"],
+    "min_match": 2,
+    "base_risk": "moderate",
+    "precautions": [
+      "Drink at least 8-10 glasses of water daily",
+      "Do not hold urine for long periods",
+      "Maintain proper hygiene",
+      "Avoid irritating soaps or body washes",
+      "Wear cotton undergarments"
+    ],
+    "home_remedies": [
+      "Cranberry juice (unsweetened) to prevent bacterial growth",
+      "Warm compress on lower abdomen for pain",
+      "Coconut water for natural cleansing",
+      "Baking soda in water (1 tsp in glass) for pH balance",
+      "Coriander seed water"
+    ],
+    "medicines": [
+      "Nitrofurantoin (100mg) twice daily for 5 days",
+      "Ciprofloxacin (500mg) if prescribed",
+      "Paracetamol for pain and fever",
+      "Cranberry supplements"
+    ]
+  },
+  {
+    "disease": "Allergic Rhinitis",
+    "category": "allergy",
+    "symptoms": ["sneezing", "runny_nose", "itchy_eyes", "nasal_congestion", "watery_eyes", "itchy_throat"],
+    "min_match": 2,
+    "base_risk": "low",
+    "precautions": [
+      "Identify and avoid allergens (dust, pollen, pet dander)",
+      "Keep windows closed during high pollen season",
+      "Use air purifier indoors",
+      "Shower after coming from outside",
+      "Use dust-proof pillow and mattress covers"
+    ],
+    "home_remedies": [
+      "Saline nasal rinse (neti pot)",
+      "Local honey consumption for pollen immunity",
+      "Steam inhalation with peppermint oil",
+      "Turmeric and ginger tea for anti-inflammation",
+      "Apple cider vinegar in water daily"
+    ],
+    "medicines": [
+      "Cetirizine (10mg) or Levocetirizine (5mg) daily",
+      "Fluticasone nasal spray (2 sprays each nostril daily)",
+      "Montelukast (10mg) at night if persistent",
+      "Eye drops (Olopatadine) for itchy eyes"
+    ]
+  },
+  {
+    "disease": "Chickenpox",
+    "category": "viral",
+    "symptoms": ["fever", "rash", "itchy_skin", "fatigue", "headache", "loss_of_appetite", "body_pain"],
+    "min_match": 3,
+    "base_risk": "moderate",
+    "precautions": [
+      "Isolate the patient to prevent spreading",
+      "Avoid scratching the blisters (can cause scarring)",
+      "Keep nails trimmed short",
+      "Wear loose cotton clothing",
+      "Bathe with neem water"
+    ],
+    "home_remedies": [
+      "Neem leaf bath water to soothe itching",
+      "Oatmeal bath for skin relief",
+      "Calamine lotion on blisters",
+      "Baking soda paste on itchy spots",
+      "Cool compress on affected areas"
+    ],
+    "medicines": [
+      "Acyclovir (800mg) 5 times daily for 7 days (if started early)",
+      "Paracetamol for fever (avoid aspirin)",
+      "Calamine lotion for external application",
+      "Cetirizine for itching relief"
+    ]
+  },
+  {
+    "disease": "Hypertension (High BP)",
+    "category": "cardiovascular",
+    "symptoms": ["headache", "dizziness", "blurred_vision", "chest_pain", "shortness_of_breath", "nosebleed", "fatigue"],
+    "min_match": 2,
+    "base_risk": "high",
+    "precautions": [
+      "Monitor blood pressure daily",
+      "Reduce salt intake significantly",
+      "Exercise (brisk walking) for 30 minutes daily",
+      "Manage stress through meditation and yoga",
+      "Avoid smoking and alcohol"
+    ],
+    "home_remedies": [
+      "Garlic consumption (raw or in food) for BP control",
+      "Hibiscus tea (known to lower BP naturally)",
+      "Beetroot juice daily",
+      "Reduce sodium, increase potassium (bananas, spinach)",
+      "Deep breathing exercises for 10 minutes daily"
+    ],
+    "medicines": [
+      "Amlodipine (5mg) once daily",
+      "Telmisartan (40mg) once daily",
+      "Aspirin (75mg) if prescribed for cardiac protection",
+      "Consult cardiologist for proper prescription"
+    ]
+  },
+  {
+    "disease": "Diabetes Symptoms",
+    "category": "metabolic",
+    "symptoms": ["frequent_urination", "excessive_thirst", "fatigue", "blurred_vision", "slow_wound_healing", "weight_loss", "tingling_hands"],
+    "min_match": 3,
+    "base_risk": "high",
+    "precautions": [
+      "Get fasting blood sugar test done",
+      "Follow a low-sugar, low-carb diet",
+      "Exercise regularly (at least 30 min daily)",
+      "Monitor blood sugar levels regularly",
+      "Avoid sugary drinks and processed food"
+    ],
+    "home_remedies": [
+      "Bitter gourd (karela) juice on empty stomach",
+      "Fenugreek (methi) seeds soaked overnight in water",
+      "Cinnamon powder in warm water",
+      "Amla (Indian gooseberry) juice",
+      "Walk for 30 minutes after each meal"
+    ],
+    "medicines": [
+      "Metformin (500mg) as prescribed by doctor",
+      "Glimepiride if needed (doctor's prescription)",
+      "Insulin injections for Type 1 or severe Type 2",
+      "Regular HbA1c testing every 3 months"
+    ]
+  },
+  {
+    "disease": "Food Poisoning",
+    "category": "gastrointestinal",
+    "symptoms": ["nausea", "vomiting", "diarrhea", "stomach_pain", "fever", "fatigue", "dehydration"],
+    "min_match": 3,
+    "base_risk": "moderate",
+    "precautions": [
+      "Stay hydrated with ORS and clear fluids",
+      "Avoid solid food for first few hours",
+      "Eat bland food (BRAT diet: banana, rice, applesauce, toast)",
+      "Avoid dairy, caffeine, and spicy food",
+      "Seek medical help if symptoms last > 48 hours"
+    ],
+    "home_remedies": [
+      "Ginger tea to settle stomach",
+      "Apple cider vinegar (1 tbsp in water)",
+      "Lemon juice with warm water and salt",
+      "Mint leaves chewed or as tea",
+      "Cumin (jeera) water for digestion"
+    ],
+    "medicines": [
+      "ORS sachets for rehydration",
+      "Ondansetron (4mg) for vomiting",
+      "Loperamide (2mg) for severe diarrhea",
+      "Probiotics to restore gut flora",
+      "Racecadotril if prescribed"
+    ]
+  },
+  {
+    "disease": "Bronchitis",
+    "category": "respiratory",
+    "symptoms": ["cough", "phlegm", "chest_pain", "fatigue", "shortness_of_breath", "sore_throat", "mild_fever"],
+    "min_match": 3,
+    "base_risk": "moderate",
+    "precautions": [
+      "Avoid smoking and secondhand smoke",
+      "Use a humidifier at home",
+      "Stay hydrated with warm liquids",
+      "Avoid dusty or polluted environments",
+      "Cover mouth while coughing"
+    ],
+    "home_remedies": [
+      "Honey in warm water with lemon",
+      "Steam inhalation 3 times daily",
+      "Ginger and turmeric tea",
+      "Salt water gargling for throat",
+      "Eucalyptus oil in diffuser"
+    ],
+    "medicines": [
+      "Ambroxol cough syrup for phlegm",
+      "Salbutamol inhaler if wheezing",
+      "Azithromycin if bacterial infection confirmed",
+      "Paracetamol for mild fever"
+    ]
+  },
+  {
+    "disease": "Sinusitis",
+    "category": "respiratory",
+    "symptoms": ["nasal_congestion", "headache", "facial_pain", "runny_nose", "cough", "fever", "loss_of_smell"],
+    "min_match": 3,
+    "base_risk": "low",
+    "precautions": [
+      "Use a humidifier to moisten air",
+      "Apply warm compress to face for relief",
+      "Stay hydrated with warm fluids",
+      "Avoid sudden temperature changes",
+      "Use saline nasal spray regularly"
+    ],
+    "home_remedies": [
+      "Steam inhalation with eucalyptus oil",
+      "Warm compress on nose and forehead",
+      "Saline nasal rinse (neti pot)",
+      "Apple cider vinegar in warm water with honey",
+      "Spicy foods to help clear sinuses"
+    ],
+    "medicines": [
+      "Amoxicillin-Clavulanate if bacterial",
+      "Nasal decongestant spray (Xylometazoline) — max 3 days",
+      "Fluticasone nasal spray for inflammation",
+      "Paracetamol or Ibuprofen for headache and pain",
+      "Steam plus Menthol inhalers"
+    ]
+  },
+  {
+    "disease": "Conjunctivitis (Pink Eye)",
+    "category": "eye_infection",
+    "symptoms": ["red_eyes", "itchy_eyes", "watery_eyes", "eye_discharge", "swollen_eyelids", "light_sensitivity"],
+    "min_match": 2,
+    "base_risk": "low",
+    "precautions": [
+      "Do not rub or touch eyes",
+      "Wash hands frequently",
+      "Use separate towels and pillows",
+      "Avoid wearing contact lenses until healed",
+      "Stay home to prevent spreading"
+    ],
+    "home_remedies": [
+      "Cold compress on closed eyes for swelling",
+      "Rose water drops for soothing",
+      "Chamomile tea bag compress (cooled)",
+      "Clean eyes with boiled and cooled water",
+      "Honey diluted in warm water (as eye wash)"
+    ],
+    "medicines": [
+      "Moxifloxacin eye drops (1 drop, 4 times daily)",
+      "Artificial tears for dryness",
+      "Olopatadine eye drops if allergic type",
+      "Ciprofloxacin eye ointment at bedtime"
+    ]
+  },
+  {
+    "disease": "Anxiety Disorder",
+    "category": "mental_health",
+    "symptoms": ["restlessness", "rapid_heartbeat", "sweating", "difficulty_breathing", "insomnia", "dizziness", "trembling"],
+    "min_match": 3,
+    "base_risk": "moderate",
+    "precautions": [
+      "Practice deep breathing exercises (4-7-8 technique)",
+      "Limit caffeine and alcohol intake",
+      "Maintain regular sleep schedule",
+      "Exercise regularly (yoga, walking, swimming)",
+      "Seek professional counseling if persistent"
+    ],
+    "home_remedies": [
+      "Chamomile tea before bed for calming",
+      "Lavender oil aromatherapy",
+      "Ashwagandha supplements for stress relief",
+      "Meditation and mindfulness practice (10 min daily)",
+      "Warm bath with Epsom salt before sleep"
+    ],
+    "medicines": [
+      "Consult psychiatrist for proper evaluation",
+      "SSRIs (Escitalopram/Sertraline) if prescribed",
+      "Clonazepam for acute anxiety (short-term only)",
+      "Melatonin supplements if insomnia present"
+    ]
+  }
+]

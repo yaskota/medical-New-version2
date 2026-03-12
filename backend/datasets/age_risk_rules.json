@@ -1,0 +1,19 @@
+{
+  "high_risk_ages": {
+    "child": {"min": 0, "max": 5, "multiplier": 1.5, "note": "Young children are more vulnerable"},
+    "elderly": {"min": 60, "max": 150, "multiplier": 1.8, "note": "Elderly patients face higher risk"}
+  },
+  "disease_age_risks": [
+    {"disease": "Hypertension (High BP)", "risk_age": 40, "risk_boost": "high"},
+    {"disease": "Diabetes Symptoms", "risk_age": 35, "risk_boost": "high"},
+    {"disease": "Pneumonia", "risk_age": 55, "risk_boost": "high"},
+    {"disease": "COVID-19", "risk_age": 60, "risk_boost": "high"},
+    {"disease": "Dengue Fever", "risk_age": 5, "risk_boost": "high"},
+    {"disease": "Malaria", "risk_age": 5, "risk_boost": "high"},
+    {"disease": "Typhoid Fever", "risk_age": 50, "risk_boost": "high"},
+    {"disease": "Migraine", "risk_age": 15, "risk_boost": "moderate"},
+    {"disease": "Bronchitis", "risk_age": 55, "risk_boost": "high"},
+    {"disease": "Chickenpox", "risk_age": 50, "risk_boost": "high"},
+    {"disease": "Anxiety Disorder", "risk_age": 15, "risk_boost": "moderate"}
+  ]
+}

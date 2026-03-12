@@ -1,0 +1,6 @@
+{
+  "low": {"max_days": 2, "label": "mild"},
+  "moderate": {"max_days": 5, "label": "moderate"},
+  "serious": {"max_days": 10, "label": "serious"},
+  "critical": {"max_days": 999, "label": "critical"}
+}

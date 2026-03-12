@@ -1,0 +1,192 @@
+{
+  "fever": {
+    "questions": [
+      {"question": "Do you have body pain or muscle aches?", "symptom": "body_pain"},
+      {"question": "Do you have chills or shivering?", "symptom": "chills"},
+      {"question": "Are you experiencing excessive sweating?", "symptom": "sweating"},
+      {"question": "Do you have a headache?", "symptom": "headache"},
+      {"question": "Do you have a sore throat?", "symptom": "sore_throat"},
+      {"question": "Do you feel nauseous or have vomiting?", "symptom": "nausea"},
+      {"question": "Do you have a rash or red spots on your body?", "symptom": "rash"},
+      {"question": "Do you have joint pain?", "symptom": "joint_pain"}
+    ]
+  },
+  "headache": {
+    "questions": [
+      {"question": "Do you feel nauseous?", "symptom": "nausea"},
+      {"question": "Are you sensitive to bright lights?", "symptom": "light_sensitivity"},
+      {"question": "Are you sensitive to loud sounds?", "symptom": "sound_sensitivity"},
+      {"question": "Is it a throbbing or pulsating pain?", "symptom": "throbbing_pain"},
+      {"question": "Do you have blurred vision?", "symptom": "blurred_vision"},
+      {"question": "Do you feel dizzy?", "symptom": "dizziness"},
+      {"question": "Do you have fever along with the headache?", "symptom": "fever"},
+      {"question": "Do you have nasal congestion or facial pressure?", "symptom": "facial_pain"}
+    ]
+  },
+  "cough": {
+    "questions": [
+      {"question": "Do you feel chest pain while coughing?", "symptom": "chest_pain"},
+      {"question": "Do you have difficulty breathing?", "symptom": "difficulty_breathing"},
+      {"question": "Do you cough up phlegm or mucus?", "symptom": "phlegm"},
+      {"question": "Do you have a sore throat?", "symptom": "sore_throat"},
+      {"question": "Do you have fever?", "symptom": "fever"},
+      {"question": "Do you have a runny or blocked nose?", "symptom": "runny_nose"},
+      {"question": "Are you experiencing fatigue or weakness?", "symptom": "fatigue"}
+    ]
+  },
+  "stomach_pain": {
+    "questions": [
+      {"question": "Do you feel bloated or have gas?", "symptom": "bloating"},
+      {"question": "Do you feel a burning sensation in your chest?", "symptom": "burning_chest"},
+      {"question": "Do you feel nauseous?", "symptom": "nausea"},
+      {"question": "Do you have vomiting?", "symptom": "vomiting"},
+      {"question": "Do you have diarrhea or loose stools?", "symptom": "diarrhea"},
+      {"question": "Have you lost your appetite?", "symptom": "loss_of_appetite"},
+      {"question": "Do you have acidity or sour taste in mouth?", "symptom": "acidity"},
+      {"question": "Do you have frequent belching or burping?", "symptom": "belching"}
+    ]
+  },
+  "acidity": {
+    "questions": [
+      {"question": "Do you have a burning feeling in your chest?", "symptom": "burning_chest"},
+      {"question": "Do you feel bloated?", "symptom": "bloating"},
+      {"question": "Do you have nausea?", "symptom": "nausea"},
+      {"question": "Do you have stomach pain?", "symptom": "stomach_pain"},
+      {"question": "Do you have difficulty swallowing?", "symptom": "difficulty_swallowing"},
+      {"question": "Do you have a sour taste in your mouth?", "symptom": "sour_taste"},
+      {"question": "Do you have frequent belching?", "symptom": "belching"}
+    ]
+  },
+  "nausea": {
+    "questions": [
+      {"question": "Do you have vomiting?", "symptom": "vomiting"},
+      {"question": "Do you have stomach pain?", "symptom": "stomach_pain"},
+      {"question": "Do you have diarrhea?", "symptom": "diarrhea"},
+      {"question": "Do you have fever?", "symptom": "fever"},
+      {"question": "Do you feel dizzy?", "symptom": "dizziness"},
+      {"question": "Do you have a headache?", "symptom": "headache"},
+      {"question": "Have you lost your appetite?", "symptom": "loss_of_appetite"}
+    ]
+  },
+  "difficulty_breathing": {
+    "questions": [
+      {"question": "Do you have chest pain or tightness?", "symptom": "chest_pain"},
+      {"question": "Do you have a cough?", "symptom": "cough"},
+      {"question": "Do you have fever?", "symptom": "fever"},
+      {"question": "Do you feel extremely tired?", "symptom": "fatigue"},
+      {"question": "Do you have a rapid heartbeat?", "symptom": "rapid_heartbeat"},
+      {"question": "Are you sweating excessively?", "symptom": "sweating"},
+      {"question": "Do you have wheezing sounds while breathing?", "symptom": "phlegm"}
+    ]
+  },
+  "chest_pain": {
+    "questions": [
+      {"question": "Do you have difficulty breathing?", "symptom": "difficulty_breathing"},
+      {"question": "Do you feel dizzy or lightheaded?", "symptom": "dizziness"},
+      {"question": "Are you sweating excessively?", "symptom": "sweating"},
+      {"question": "Do you have a rapid heartbeat?", "symptom": "rapid_heartbeat"},
+      {"question": "Do you have nausea?", "symptom": "nausea"},
+      {"question": "Is the pain spreading to your arm or jaw?", "symptom": "radiating_pain"},
+      {"question": "Do you have a burning sensation (like acidity)?", "symptom": "burning_chest"}
+    ]
+  },
+  "rash": {
+    "questions": [
+      {"question": "Do you have fever?", "symptom": "fever"},
+      {"question": "Is the rash itchy?", "symptom": "itchy_skin"},
+      {"question": "Do you have body pain?", "symptom": "body_pain"},
+      {"question": "Have you lost your appetite?", "symptom": "loss_of_appetite"},
+      {"question": "Do you feel fatigued?", "symptom": "fatigue"},
+      {"question": "Do you have joint pain?", "symptom": "joint_pain"}
+    ]
+  },
+  "diarrhea": {
+    "questions": [
+      {"question": "Do you have vomiting?", "symptom": "vomiting"},
+      {"question": "Do you have stomach pain or cramps?", "symptom": "stomach_pain"},
+      {"question": "Do you have fever?", "symptom": "fever"},
+      {"question": "Do you feel dehydrated (dry mouth, extreme thirst)?", "symptom": "dehydration"},
+      {"question": "Do you feel nauseous?", "symptom": "nausea"},
+      {"question": "Are you feeling extremely weak?", "symptom": "fatigue"}
+    ]
+  },
+  "burning_urination": {
+    "questions": [
+      {"question": "Do you have frequent urge to urinate?", "symptom": "frequent_urination"},
+      {"question": "Do you have lower abdominal pain?", "symptom": "lower_abdominal_pain"},
+      {"question": "Is your urine cloudy or dark colored?", "symptom": "cloudy_urine"},
+      {"question": "Do you have fever?", "symptom": "fever"},
+      {"question": "Do you have back pain?", "symptom": "back_pain"}
+    ]
+  },
+  "sneezing": {
+    "questions": [
+      {"question": "Do you have a runny nose?", "symptom": "runny_nose"},
+      {"question": "Do you have itchy or watery eyes?", "symptom": "itchy_eyes"},
+      {"question": "Do you have nasal congestion?", "symptom": "nasal_congestion"},
+      {"question": "Do you have an itchy throat?", "symptom": "itchy_throat"},
+      {"question": "Do you have watery eyes?", "symptom": "watery_eyes"},
+      {"question": "Do you have a sore throat?", "symptom": "sore_throat"}
+    ]
+  },
+  "red_eyes": {
+    "questions": [
+      {"question": "Do your eyes feel itchy?", "symptom": "itchy_eyes"},
+      {"question": "Do you have watery or teary eyes?", "symptom": "watery_eyes"},
+      {"question": "Do you have any discharge from your eyes?", "symptom": "eye_discharge"},
+      {"question": "Are your eyelids swollen?", "symptom": "swollen_eyelids"},
+      {"question": "Are you sensitive to light?", "symptom": "light_sensitivity"}
+    ]
+  },
+  "dizziness": {
+    "questions": [
+      {"question": "Do you have a headache?", "symptom": "headache"},
+      {"question": "Do you have blurred vision?", "symptom": "blurred_vision"},
+      {"question": "Do you feel nauseous?", "symptom": "nausea"},
+      {"question": "Do you have a rapid heartbeat?", "symptom": "rapid_heartbeat"},
+      {"question": "Are you experiencing shortness of breath?", "symptom": "shortness_of_breath"},
+      {"question": "Do you have chest pain?", "symptom": "chest_pain"}
+    ]
+  },
+  "insomnia": {
+    "questions": [
+      {"question": "Do you feel restless or anxious?", "symptom": "restlessness"},
+      {"question": "Do you have a rapid heartbeat?", "symptom": "rapid_heartbeat"},
+      {"question": "Are you sweating at night?", "symptom": "sweating"},
+      {"question": "Do you feel trembling or shaky?", "symptom": "trembling"},
+      {"question": "Do you have difficulty breathing?", "symptom": "difficulty_breathing"},
+      {"question": "Do you feel dizzy?", "symptom": "dizziness"}
+    ]
+  },
+  "fatigue": {
+    "questions": [
+      {"question": "Do you have fever?", "symptom": "fever"},
+      {"question": "Do you have headache?", "symptom": "headache"},
+      {"question": "Do you have body or muscle pain?", "symptom": "body_pain"},
+      {"question": "Have you lost your appetite?", "symptom": "loss_of_appetite"},
+      {"question": "Do you feel dizzy?", "symptom": "dizziness"},
+      {"question": "Do you have blurred vision?", "symptom": "blurred_vision"},
+      {"question": "Are you urinating frequently?", "symptom": "frequent_urination"}
+    ]
+  },
+  "runny_nose": {
+    "questions": [
+      {"question": "Do you have sneezing?", "symptom": "sneezing"},
+      {"question": "Do you have a sore throat?", "symptom": "sore_throat"},
+      {"question": "Do you have a cough?", "symptom": "cough"},
+      {"question": "Do you have a mild headache?", "symptom": "mild_headache"},
+      {"question": "Do you have watery eyes?", "symptom": "watery_eyes"},
+      {"question": "Do you have nasal congestion?", "symptom": "nasal_congestion"}
+    ]
+  },
+  "joint_pain": {
+    "questions": [
+      {"question": "Do you have fever?", "symptom": "fever"},
+      {"question": "Do you have body pain?", "symptom": "body_pain"},
+      {"question": "Do you have a rash?", "symptom": "rash"},
+      {"question": "Do you feel fatigued?", "symptom": "fatigue"},
+      {"question": "Do you have swelling in joints?", "symptom": "joint_swelling"},
+      {"question": "Do you have eye pain?", "symptom": "eye_pain"}
+    ]
+  }
+}
