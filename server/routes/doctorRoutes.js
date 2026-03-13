@@ -2,10 +2,16 @@ import express from "express";
 
 import {verifyToken} from "../middlewares/authMiddleware.js";
 import {allowDoctor} from "../middlewares/roleMiddleware.js";
+import {allowAdmin} from "../middlewares/roleMiddleware.js";
 
 import {
 createDoctorProfile,
 getDoctorProfile
+} from "../controllers/doctorController.js";
+
+import {
+approveDoctor,
+getPendingDoctors
 } from "../controllers/doctorController.js";
 
 const router = express.Router();
@@ -13,5 +19,9 @@ const router = express.Router();
 router.post("/create",verifyToken,allowDoctor,createDoctorProfile);
 
 router.get("/profile",verifyToken,allowDoctor,getDoctorProfile);
+
+router.get("/pending",verifyToken,allowAdmin,getPendingDoctors);
+
+router.patch("/approve/:id",verifyToken,allowAdmin,approveDoctor);
 
 export default router;

@@ -1,7 +1,9 @@
 import express from 'express';
 import dotenv from "dotenv";
+import cors from "cors";
 import connectDB from "./config/db.js";
 import cookieParser from "cookie-parser";
+
 import authRoutes from "./routes/authRoutes.js";
 import doctorRoutes from "./routes/doctorRoutes.js";
 import hospitalRoutes from "./routes/hospitalRoutes.js";
@@ -10,28 +12,38 @@ import medicalFileRoutes from "./routes/medicalFileRoutes.js";
 import patientRecordRoutes from "./routes/patientRecordRoutes.js";
 import appointmentRoutes from "./routes/appointmentRoutes.js";
 import scheduleRoutes from "./routes/scheduleRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 
 dotenv.config();
 
-const app=express();
+const app = express();
 
 connectDB();
-
 
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/api/auth",authRoutes);
-app.use("/api/doctors",doctorRoutes);
-app.use("/api/hospitals",hospitalRoutes);
-app.use("/api/departments",departmentRoutes);
-app.use("/api/medical-files",medicalFileRoutes);
-app.use("/api/patient-records",patientRecordRoutes);
-app.use("/api/appointments",appointmentRoutes);
-app.use("/api/schedules",scheduleRoutes);
+/* CORS Configuration */
+app.use(
+  cors({
+    origin: "http://localhost:5173", // frontend URL (React/Vite)
+    credentials: true
+  })
+);
 
-const port=process.env.PORT;
+/* Routes */
+app.use("/api/auth", authRoutes);
+app.use("/api/doctors", doctorRoutes);
+app.use("/api/hospitals", hospitalRoutes);
+app.use("/api/departments", departmentRoutes);
+app.use("/api/medical-files", medicalFileRoutes);
+app.use("/api/patient-records", patientRecordRoutes);
+app.use("/api/appointments", appointmentRoutes);
+app.use("/api/schedules", scheduleRoutes);
+app.use("/api/reviews", reviewRoutes);
 
-app.listen(port , ()=>{
-    console.log(`server is running in the port ${port}`);
-})
+const port = process.env.PORT;
+
+app.listen(port, () => {
+  console.log(`server is running in the port ${port}`);
+});

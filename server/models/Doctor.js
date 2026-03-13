@@ -6,9 +6,11 @@ const doctorSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
     },
+
     photo:{
         type:String
     },
+
     doctor_id:{
         type:String,
         required:true
@@ -31,7 +33,12 @@ const doctorSchema = new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:"Hospital"
         }
-    ]
+    ],
+
+    approved_by_admin:{
+        type:Boolean,
+        default:false
+    }
 
 },{timestamps:true});
 
