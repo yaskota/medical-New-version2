@@ -1,87 +1,98 @@
-def get_followup_questions(user_symptoms, followup_data, already_asked=None):
+def calculate_gini(group_size):
     """
-    Generate disease-specific follow-up questions based on detected symptoms.
-    
-    Args:
-        user_symptoms: List of symptoms detected from user input
-        followup_data: Dictionary mapping symptoms to their follow-up questions
-        already_asked: Set of symptoms already asked about (to avoid duplicates)
-    
-    Returns:
-        List of question objects [{question, symptom}, ...]
+    Calculate Gini Impurity for a group of unique diseases.
+    Since each candidate disease is a unique outcome, the probability 
+    of any single disease is 1 / group_size.
     """
-    if already_asked is None:
-        already_asked = set()
+    if group_size <= 0: return 0.0
+    return 1.0 - (1.0 / group_size)
 
-    questions = []
-    seen_symptoms = set(user_symptoms) | set(already_asked)
-
-    for symptom in user_symptoms:
-        if symptom in followup_data:
-            symptom_questions = followup_data[symptom].get("questions", [])
-
-            for q in symptom_questions:
-                target_symptom = q["symptom"]
-
-                # Don't ask about symptoms user already has or already asked
-                if target_symptom not in seen_symptoms:
-                    questions.append({
-                        "question": q["question"],
-                        "symptom": target_symptom,
-                        "source_symptom": symptom
-                    })
-                    seen_symptoms.add(target_symptom)
-
-    # Limit to a reasonable number of questions (max 5-6)
-    return questions[:6]
-
-
-def get_additional_questions(user_symptoms, diseases, followup_data, already_asked=None):
+def get_smart_followup_questions(confirmed_symptoms, denied_symptoms, diseases_db, followup_dict, already_asked=None):
     """
-    If initial follow-up questions weren't enough to narrow down diseases,
-    generate additional questions based on candidate disease symptoms.
-    
-    Uses the disease database to find which unasked symptoms would best
-    differentiate between candidate diseases.
+    Uses Information Gain (Gini Impurity) to determine the mathematical 
+    best next symptom to ask the user, halving the candidate diseases efficiently.
     """
     if already_asked is None:
         already_asked = set()
-
-    # Find candidate diseases (any with at least 1 matching symptom)
+        
+    seen_symptoms = set(confirmed_symptoms) | set(denied_symptoms) | set(already_asked)
+    
+    # 1. Identify Candidate Diseases
     candidates = []
-    for disease in diseases:
-        for s in user_symptoms:
-            if s in disease["symptoms"]:
+    for disease in diseases_db:
+        disease_symptoms = set(disease.get("symptoms", []))
+        
+        if not confirmed_symptoms:
+            candidates.append(disease)
+        else:
+            # Only consider diseases that match at least one confirmed symptom
+            # AND do not contain symptoms the user explicitly denied.
+            if disease_symptoms.intersection(set(confirmed_symptoms)):
                 candidates.append(disease)
-                break
-
+                
     if not candidates:
-        return []
-
-    # Count how many candidate diseases each unasked symptom appears in
-    symptom_frequency = {}
-    seen = set(user_symptoms) | set(already_asked)
-
+        candidates = diseases_db  # Fallback to all if no overlap
+        
+    N = len(candidates)
+    if N <= 1:
+        return [] # Perfect confidence achieved, no more questions needed
+        
+    # 2. Gather all unasked symptoms from these candidate diseases
+    symptom_counts = {}
     for disease in candidates:
-        for s in disease["symptoms"]:
-            if s not in seen:
-                if s not in symptom_frequency:
-                    symptom_frequency[s] = 0
-                symptom_frequency[s] += 1
-
-    if not symptom_frequency:
+        for sym in disease.get("symptoms", []):
+            if sym not in seen_symptoms:
+                symptom_counts[sym] = symptom_counts.get(sym, 0) + 1
+                
+    if not symptom_counts:
         return []
-
-    # Sort by frequency (most discriminating symptoms first)
-    sorted_symptoms = sorted(symptom_frequency.items(), key=lambda x: x[1], reverse=True)
-
-    # Generate questions for top discriminating symptoms
+        
+    # 3. Calculate Information Gain for each symptom
+    parent_gini = calculate_gini(N)
+    symptom_ig = []
+    
+    for sym, count_yes in symptom_counts.items():
+        count_no = N - count_yes
+        
+        weight_yes = count_yes / N
+        weight_no = count_no / N
+        
+        # Gini of the two resulting branches
+        gini_yes = calculate_gini(count_yes)
+        gini_no = calculate_gini(count_no)
+        
+        # Calculate Information Gain
+        expected_child_gini = (weight_yes * gini_yes) + (weight_no * gini_no)
+        info_gain = parent_gini - expected_child_gini
+        
+        symptom_ig.append((sym, info_gain))
+        
+    # 4. Sort symptoms by highest Information Gain
+    symptom_ig.sort(key=lambda x: x[1], reverse=True)
+    
+    # 5. Format the best questions
     questions = []
-    for symptom, freq in sorted_symptoms[:4]:
+    for sym, ig in symptom_ig[:5]: # Top 5 mathematically optimal questions
+        natural_question = None
+        
+        # Try to pull a human-sounding question from the JSON
+        for source, data in followup_dict.items():
+            for q in data.get("questions", []):
+                if q["symptom"] == sym:
+                    natural_question = q["question"]
+                    break
+            if natural_question:
+                break
+        
+        # Fallback if no natural question exists in the JSON
+        if not natural_question:
+            natural_name = sym.replace("_", " ")
+            natural_question = f"Are you experiencing any {natural_name}?"
+            
         questions.append({
-            "question": f"Do you have {symptom.replace('_', ' ')}?",
-            "symptom": symptom,
-            "source_symptom": "disease_analysis"
+            "question": natural_question,
+            "symptom": sym,
+            "info_gain": round(ig, 3) # Stored for debugging/logging
         })
-
+        
     return questions
