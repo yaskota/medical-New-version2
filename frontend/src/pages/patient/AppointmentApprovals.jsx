@@ -65,7 +65,7 @@ const AppointmentApprovals = () => {
                     <div className="font-semibold text-gray-800">Dr. {apt.doctor_id?.user_id?.name || "N/A"}</div>
                     <div className="text-sm text-gray-500 mt-0.5">🏥 {apt.hospital_id?.hospital_name || "N/A"}</div>
                     <div className="text-xs text-gray-400 mt-1">
-                      📅 {apt.appointment_date ? new Date(apt.appointment_date).toLocaleDateString() : "N/A"} • 🕐 {apt.appointment_time || "N/A"}
+                      📅 {apt.appointment_date ? new Date(apt.appointment_date).toLocaleDateString() : "Date TBD"} • 🕐 {apt.appointment_time || "To be assigned"}
                     </div>
                     {apt.reason && <div className="text-sm text-gray-600 mt-2 italic">"{apt.reason}"</div>}
                   </div>

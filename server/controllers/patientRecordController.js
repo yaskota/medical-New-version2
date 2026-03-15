@@ -71,4 +71,28 @@ export const getPatientRecordById = async (req,res)=>{
 
 }
 
+// @route   GET /api/patient-records/my-records
+// @desc    Fetch records for logged-in patient
+export const getMyPatientRecords = async (req, res) => {
+  try {
+    const patient_id = req.user.id; // From verifyToken
+
+    const records = await PatientRecord.find({ patient_id })
+      .populate("patient_id", "name email phone")
+      .populate({
+        path: "doctor_id",
+        populate: {
+          path: "user_id",
+          select: "name"
+        }
+      })
+      .populate("hospital_id", "hospital_name")
+      .sort({ visit_date: -1 });
+
+    res.status(200).json({ success: true, count: records.length, data: records });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+}
+
 

@@ -177,6 +177,11 @@ export const getPatientRecordById = async (id) => {
   return res.data;
 };
 
+export const getMyPatientRecords = async () => {
+  const res = await serverAxios.get("/patient-records/my-records");
+  return res.data;
+};
+
 // ──── Schedule APIs ────────────────────────────────────────
 export const createDoctorSchedule = async (data) => {
   const res = await serverAxios.post("/schedules/create", data);
@@ -201,5 +206,31 @@ export const getReviewsByDoctor = async (doctorId) => {
 
 export const getReviewsByHospital = async (hospitalId) => {
   const res = await serverAxios.get(`/reviews/hospital/${hospitalId}`);
+  return res.data;
+};
+
+// ──── Admin APIs ──────────────────────────────────────────
+export const getAdminPatients = async () => {
+  const res = await serverAxios.get("/admin/patients");
+  return res.data;
+};
+
+export const getAdminDoctors = async () => {
+  const res = await serverAxios.get("/admin/doctors");
+  return res.data;
+};
+
+export const getAdminPendingDoctors = async () => {
+  const res = await serverAxios.get("/admin/pending-doctors");
+  return res.data;
+};
+
+export const adminApproveDoctor = async (id) => {
+  const res = await serverAxios.put(`/admin/approve-doctor/${id}`);
+  return res.data;
+};
+
+export const adminRejectDoctor = async (id) => {
+  const res = await serverAxios.delete(`/admin/reject-doctor/${id}`);
   return res.data;
 };

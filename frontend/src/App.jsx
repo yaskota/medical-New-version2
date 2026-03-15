@@ -11,12 +11,11 @@ import VerifyOTP from "./pages/auth/VerifyOTP";
 // Patient
 import DashboardLayout from "./components/DashboardLayout";
 import PatientDetails from "./pages/patient/PatientDetails";
-import PatientHistory from "./pages/patient/PatientHistory";
 import MedicalFiles from "./pages/patient/MedicalFiles";
 import HospitalDetails from "./pages/patient/HospitalDetails";
-import Departments from "./pages/patient/Departments";
 import Doctors from "./pages/patient/Doctors";
 import AppointmentApprovals from "./pages/patient/AppointmentApprovals";
+import PatientRecords from "./pages/patient/PatientRecords";
 
 // Doctor
 import DoctorDashboard from "./pages/doctor/DoctorDashboard";
@@ -34,6 +33,7 @@ import HospitalMedicalRecords from "./pages/hospital/HospitalMedicalRecords";
 
 // Admin
 import AdminDoctors from "./pages/admin/AdminDoctors";
+import DoctorApproval from "./pages/admin/DoctorApproval";
 import AdminHospitals from "./pages/admin/AdminHospitals";
 import AdminPatients from "./pages/admin/AdminPatients";
 import AdminPatientRecords from "./pages/admin/AdminPatientRecords";
@@ -60,10 +60,9 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 const PatientLayout = () => {
   const sidebarItems = [
     { path: "/patient", label: "Patient Details", icon: "👤" },
-    { path: "/patient/history", label: "Patient History", icon: "📋" },
+    { path: "/patient/records", label: "Patient Records", icon: "📋" },
     { path: "/patient/medical-files", label: "Medical Files", icon: "📂" },
     { path: "/patient/hospitals", label: "Hospital Details", icon: "🏥" },
-    { path: "/patient/departments", label: "Departments", icon: "🏢" },
     { path: "/patient/doctors", label: "Doctors", icon: "👨‍⚕️" },
     { path: "/patient/appointments", label: "Appointment Approvals", icon: "📅" },
   ];
@@ -76,8 +75,8 @@ const AdminLayout = () => {
   const sidebarItems = [
     { path: "/admin", label: "Patients", icon: "👥" },
     { path: "/admin/patient-records", label: "Patient Records", icon: "📋" },
-    { path: "/admin/approved-doctors", label: "Approved Doctors", icon: "✅" },
-    { path: "/admin/unapproved-doctors", label: "Unapproved Doctors", icon: "⏳" },
+    { path: "/admin/doctors", label: "Doctors", icon: "👨‍⚕️" },
+    { path: "/admin/pending-doctors", label: "Pending Doctors", icon: "⏳" },
     { path: "/admin/approved-hospitals", label: "Approved Hospitals", icon: "🏥" },
     { path: "/admin/unapproved-hospitals", label: "Unapproved Hospitals", icon: "🔔" },
   ];
@@ -98,10 +97,9 @@ function AppRoutes() {
         {/* Patient Routes */}
         <Route path="/patient" element={<ProtectedRoute allowedRoles={["patient"]}><PatientLayout /></ProtectedRoute>}>
           <Route index element={<PatientDetails />} />
-          <Route path="history" element={<PatientHistory />} />
+          <Route path="records" element={<PatientRecords />} />
           <Route path="medical-files" element={<MedicalFiles />} />
           <Route path="hospitals" element={<HospitalDetails />} />
-          <Route path="departments" element={<Departments />} />
           <Route path="doctors" element={<Doctors />} />
           <Route path="appointments" element={<AppointmentApprovals />} />
         </Route>
@@ -126,8 +124,8 @@ function AppRoutes() {
         <Route path="/admin" element={<ProtectedRoute allowedRoles={["admin"]}><AdminLayout /></ProtectedRoute>}>
           <Route index element={<AdminPatients />} />
           <Route path="patient-records" element={<AdminPatientRecords />} />
-          <Route path="approved-doctors" element={<AdminDoctors approved={true} />} />
-          <Route path="unapproved-doctors" element={<AdminDoctors approved={false} />} />
+          <Route path="doctors" element={<AdminDoctors />} />
+          <Route path="pending-doctors" element={<DoctorApproval />} />
           <Route path="approved-hospitals" element={<AdminHospitals approved={true} />} />
           <Route path="unapproved-hospitals" element={<AdminHospitals approved={false} />} />
         </Route>

@@ -9,7 +9,7 @@ const Doctors = () => {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [bookingDoctor, setBookingDoctor] = useState(null);
-  const [bookingForm, setBookingForm] = useState({ hospital_id: "", appointment_date: "", appointment_time: "", reason: "" });
+  const [bookingForm, setBookingForm] = useState({ hospital_id: "", appointment_date: "", reason: "" });
   const [bookingLoading, setBookingLoading] = useState(false);
   const [bookingMsg, setBookingMsg] = useState("");
 
@@ -54,7 +54,6 @@ const Doctors = () => {
         doctor_id: bookingDoctor._id,
         hospital_id: bookingForm.hospital_id || bookingDoctor.hospitalId,
         appointment_date: bookingForm.appointment_date,
-        appointment_time: bookingForm.appointment_time,
         reason: bookingForm.reason,
       });
       setBookingMsg("Appointment booked successfully!");
@@ -93,16 +92,10 @@ const Doctors = () => {
 
             <form onSubmit={handleBook} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Date (Optional)</label>
                 <input type="date" value={bookingForm.appointment_date}
                   onChange={(e) => setBookingForm({ ...bookingForm, appointment_date: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:border-emerald-400 outline-none" required />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Time</label>
-                <input type="time" value={bookingForm.appointment_time}
-                  onChange={(e) => setBookingForm({ ...bookingForm, appointment_time: e.target.value })}
-                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:border-emerald-400 outline-none" required />
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:border-emerald-400 outline-none" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Reason</label>
@@ -150,7 +143,7 @@ const Doctors = () => {
                 <div className="text-sm text-gray-500">🎓 {doc.education || "N/A"}</div>
                 <div className="text-sm text-gray-500">📅 {doc.experience || 0} years experience</div>
               </div>
-              <button onClick={() => { setBookingDoctor(doc); setBookingForm({ hospital_id: doc.hospitalId, appointment_date: "", appointment_time: "", reason: "" }); }}
+              <button onClick={() => { setBookingDoctor(doc); setBookingForm({ hospital_id: doc.hospitalId, appointment_date: "", reason: "" }); }}
                 className="w-full py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-green-600 
                            shadow-md hover:shadow-lg cursor-pointer transition-all hover:-translate-y-0.5">
                 📅 Book Appointment

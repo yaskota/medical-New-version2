@@ -125,3 +125,23 @@ export const logout = (req,res)=>{
   });
 
 }
+
+
+export const fetchpatients = async (req,res)=>{
+  try{
+
+    const patients = await User.find({role:"patient"});
+
+    res.status(200).json({
+      success:true,
+      count:patients.length,
+      patients
+    });
+
+  }catch(err){
+    res.status(500).json({
+      success:false,
+      message:err.message
+    });
+  }
+}

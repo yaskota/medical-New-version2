@@ -8,18 +8,18 @@ export const bookAppointment = async (req,res)=>{
      doctor_id,
      hospital_id,
      appointment_date,
-     appointment_time,
      reason
    } = req.body;
 
    const appointment = await Appointment.create({
 
-     patient_id:req.user._id,
+     patient_id:req.user.id,
      doctor_id,
      hospital_id,
      appointment_date,
-     appointment_time,
-     reason
+     appointment_time: null, // time not initially provided
+     reason,
+     status: "pending"
 
    });
 
@@ -87,7 +87,9 @@ export const updateAppointmentStatus = async (req,res)=>{
      return res.status(404).json({message:"Appointment not found"});
    }
 
-   appointment.status = req.body.status;
+   if (req.body.status) appointment.status = req.body.status;
+   if (req.body.appointment_time) appointment.appointment_time = req.body.appointment_time;
+   if (req.body.appointment_date) appointment.appointment_date = req.body.appointment_date;
 
    await appointment.save();
 

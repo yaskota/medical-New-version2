@@ -1,74 +1,97 @@
 import { useState, useEffect } from "react";
-import { getPendingDoctors, approveDoctor } from "../../services/api";
+import { getAdminDoctors } from "../../services/api";
 
-const AdminDoctors = ({ approved = false }) => {
+const AdminDoctors = () => {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => { fetchDoctors(); }, []);
+  useEffect(() => {
+    fetchDoctors();
+  }, []);
 
   const fetchDoctors = async () => {
     try {
-      const data = await getPendingDoctors();
-      const allDocs = data.doctors || [];
-      if (approved) {
-        // Show approved doctors - the API only returns pending, so we show them with a note
-        setDoctors(allDocs.filter((d) => d.approved_by_admin));
+      const resp = await getAdminDoctors();
+      if (resp.success) {
+        setDoctors(resp.data);
+        console.log(resp.data);
       } else {
-        setDoctors(allDocs.filter((d) => !d.approved_by_admin));
+        setDoctors([]);
       }
     } catch (err) {
-      console.error(err);
+      console.error("Error fetching doctors:", err);
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleApprove = async (id) => {
-    try {
-      await approveDoctor(id);
-      fetchDoctors();
-    } catch (err) {
-      console.error(err);
     }
   };
 
   return (
     <div className="animate-fadeInUp">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">{approved ? "Approved" : "Unapproved"} Doctors</h2>
-        <p className="text-sm text-gray-500 mt-1">{approved ? "Verified doctors in the system" : "Doctors waiting for verification"}</p>
+        <h2 className="text-2xl font-bold text-gray-800">
+          All Doctor Accounts
+        </h2>
+        <p className="text-sm text-gray-500 mt-1">
+          View all registered doctor accounts
+        </p>
       </div>
 
       {loading ? (
-        <div className="text-center py-20 text-gray-400">Loading...</div>
+        <div className="text-center py-20 text-gray-400">
+          Loading doctors...
+        </div>
       ) : doctors.length === 0 ? (
         <div className="text-center py-20">
           <span className="text-5xl block mb-4">👨‍⚕️</span>
-          <p className="text-gray-500">No {approved ? "approved" : "pending"} doctors</p>
+          <p className="text-gray-500">No doctors found</p>
         </div>
       ) : (
         <div className="space-y-4">
-          {doctors.map((doc, i) => (
-            <div key={i} className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm">
-              <div className="flex items-start justify-between flex-wrap gap-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-emerald-100 flex items-center justify-center text-2xl">👨‍⚕️</div>
-                  <div>
-                    <div className="font-bold text-gray-800">Dr. {doc.user_id?.name || "N/A"}</div>
-                    <div className="text-sm text-gray-500">{doc.user_id?.email}</div>
-                    <div className="text-sm text-gray-500">📞 {doc.user_id?.phone || "N/A"}</div>
-                    <div className="text-sm text-emerald-600 mt-1">{doc.specialization || "General"} • {doc.experience || 0} yrs • {doc.education || "N/A"}</div>
-                    <div className="text-xs text-gray-400 mt-1">ID: {doc.doctor_id}</div>
-                  </div>
+          {doctors.map((doctor) => (
+            <div
+              key={doctor._id}
+              className="p-5 rounded-2xl bg-white border border-gray-200 shadow-sm flex items-start gap-4"
+            >
+              <div className="w-14 h-14 rounded-xl bg-emerald-100 flex items-center justify-center text-2xl">
+                👨‍⚕️
+              </div>
+
+              <div className="flex-1">
+                <div className="font-bold text-gray-800">
+                  Dr. {doctor.user_id?.name || "N/A"}
                 </div>
-                {!approved && (
-                  <button onClick={() => handleApprove(doc._id)}
-                    className="px-4 py-2 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-green-600 
-                               shadow-md cursor-pointer hover:-translate-y-0.5 transition-all">
-                    ✓ Approve
-                  </button>
-                )}
+
+                <div className="text-sm text-gray-500">
+                  ✉️ {doctor.user_id?.email || "N/A"}
+                </div>
+
+                <div className="text-sm text-gray-500">
+                  📞 {doctor.user_id?.phone || "N/A"}
+                </div>
+
+                <div className="text-sm text-gray-500 mt-1">
+                  🏥 Specialization: {doctor.specialization || "N/A"}
+                </div>
+
+                <div className="text-sm text-gray-500">
+                  🎓 Education: {doctor.education || "N/A"}
+                </div>
+
+                <div className="text-sm text-gray-500">
+                  ⏳ Experience: {doctor.experience || 0} years
+                </div>
+
+                <div className="text-xs text-emerald-600 mt-2">
+                  Approved: {doctor.approved_by_admin ? "Yes" : "No"}
+                </div>
+
+                <div className="text-xs text-gray-400 mt-1">
+                  Doctor ID: {doctor.doctor_id}
+                </div>
+
+                <div className="text-xs text-gray-400">
+                  Mongo ID: {doctor._id}
+                </div>
               </div>
             </div>
           ))}
@@ -77,5 +100,4 @@ const AdminDoctors = ({ approved = false }) => {
     </div>
   );
 };
-
 export default AdminDoctors;

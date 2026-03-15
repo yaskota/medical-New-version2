@@ -7,7 +7,9 @@ const DoctorAppointments = () => {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("pending");
   const [diagnosisModal, setDiagnosisModal] = useState(null);
-  const [diagForm, setDiagForm] = useState({ disease: "", diagnosis: "", prescription: "", medicines: [{ name: "", dosage: "", duration: "" }] });
+  const [diagForm, setDiagForm] = useState({ disease: "", symptoms: "", diagnosis: "", prescription: "", medicines: [{ name: "", dosage: "", duration: "" }] });
+  const [timeModal, setTimeModal] = useState(null);
+  const [timeForm, setTimeForm] = useState({ appointment_date: "", appointment_time: "" });
 
   useEffect(() => { fetchData(); }, []);
 
@@ -33,6 +35,23 @@ const DoctorAppointments = () => {
     }
   };
 
+  const handleScheduleApprove = async (e) => {
+    e.preventDefault();
+    try {
+      await updateAppointmentStatus(timeModal._id, { 
+        status: "confirmed", 
+        appointment_date: timeForm.appointment_date,
+        appointment_time: timeForm.appointment_time 
+      });
+      alert("Appointment confirmed and time assigned!");
+      setTimeModal(null);
+      fetchData();
+    } catch (err) {
+      console.error(err);
+      alert("Failed to confirm appointment");
+    }
+  };
+
   const handleAddDiagnosis = async (e) => {
     e.preventDefault();
     try {
@@ -41,6 +60,7 @@ const DoctorAppointments = () => {
         doctor_id: doctor._id,
         hospital_id: diagnosisModal.hospital_id?._id || diagnosisModal.hospital_id,
         disease: diagForm.disease,
+        symptoms: diagForm.symptoms ? diagForm.symptoms.split(",").map(s => s.trim()).filter(Boolean) : [],
         diagnosis: diagForm.diagnosis,
         prescription: diagForm.prescription,
         medicines: diagForm.medicines.filter((m) => m.name),
@@ -48,7 +68,7 @@ const DoctorAppointments = () => {
       });
       alert("Diagnosis added successfully!");
       setDiagnosisModal(null);
-      setDiagForm({ disease: "", diagnosis: "", prescription: "", medicines: [{ name: "", dosage: "", duration: "" }] });
+      setDiagForm({ disease: "", symptoms: "", diagnosis: "", prescription: "", medicines: [{ name: "", dosage: "", duration: "" }] });
     } catch (err) {
       alert("Failed to add diagnosis");
     }
@@ -79,9 +99,41 @@ const DoctorAppointments = () => {
         ))}
       </div>
 
+      {/* Time Slot Modal */}
+      {timeModal && (
+        <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4" onClick={() => setTimeModal(null)}>
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 animate-scaleIn" onClick={(e) => e.stopPropagation()}>
+            <h3 className="text-lg font-bold text-gray-800 mb-4">Assign Appointment Time</h3>
+            <p className="text-sm text-gray-500 mb-4">Approve appointment for {timeModal.patient_id?.name || "Patient"}</p>
+            <form onSubmit={handleScheduleApprove} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Appointment Date</label>
+                <input type="date" value={timeForm.appointment_date}
+                  onChange={(e) => setTimeForm({ ...timeForm, appointment_date: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:border-emerald-400 outline-none" required />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Appointment Time</label>
+                <input type="time" value={timeForm.appointment_time}
+                  onChange={(e) => setTimeForm({ ...timeForm, appointment_time: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:border-emerald-400 outline-none" required />
+              </div>
+              <div className="flex gap-3 mt-4">
+                <button type="button" onClick={() => setTimeModal(null)}
+                  className="flex-1 py-3 rounded-xl text-sm font-medium text-gray-600 border border-gray-200 hover:bg-gray-50 cursor-pointer">Cancel</button>
+                <button type="submit"
+                  className="flex-1 py-3 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-emerald-500 to-green-600 shadow-lg cursor-pointer">
+                  Confirm & Assign
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* Diagnosis Modal */}
       {diagnosisModal && (
-        <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4" onClick={() => setDiagnosisModal(null)}>
+        <div className="fixed inset-0 bg-black/40 z-50 flex items-start justify-center pt-8 p-4" onClick={() => setDiagnosisModal(null)}>
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-6 max-h-[90vh] overflow-y-auto animate-scaleIn" onClick={(e) => e.stopPropagation()}>
             <h3 className="text-lg font-bold text-gray-800 mb-4">Add Diagnosis</h3>
             <form onSubmit={handleAddDiagnosis} className="space-y-4">
@@ -89,6 +141,11 @@ const DoctorAppointments = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">Disease</label>
                 <input type="text" value={diagForm.disease} onChange={(e) => setDiagForm({ ...diagForm, disease: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:border-emerald-400 outline-none" required />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Symptoms (comma separated)</label>
+                <input type="text" value={diagForm.symptoms} onChange={(e) => setDiagForm({ ...diagForm, symptoms: e.target.value })}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:border-emerald-400 outline-none" placeholder="e.g., Fever, Cough, Headache" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Diagnosis</label>
@@ -157,9 +214,15 @@ const DoctorAppointments = () => {
                 <div className="flex gap-2 flex-wrap">
                   {apt.status === "pending" && (
                     <>
-                      <button onClick={() => handleStatusUpdate(apt._id, "confirmed")}
+                      <button onClick={() => {
+                          setTimeModal(apt);
+                          setTimeForm({
+                            appointment_date: apt.appointment_date ? apt.appointment_date.split('T')[0] : "",
+                            appointment_time: apt.appointment_time || ""
+                          });
+                        }}
                         className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-100 text-emerald-700 border border-emerald-200 hover:bg-emerald-200 cursor-pointer transition-all">
-                        ✓ Approve
+                        ✓ Assign Time (Approve)
                       </button>
                       <button onClick={() => handleStatusUpdate(apt._id, "cancelled")}
                         className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-red-100 text-red-700 border border-red-200 hover:bg-red-200 cursor-pointer transition-all">
